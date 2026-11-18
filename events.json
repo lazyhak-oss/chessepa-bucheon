@@ -1,0 +1,96 @@
+{
+ "updated": "2026-11-19",
+ "source": "https://www.chessqueen.kr/",
+ "events": [
+  {
+   "start": "2026-11-21",
+   "end": "2026-11-21",
+   "region": "서울",
+   "kind": "래피드",
+   "name": "2026 서울체스 오딧세이",
+   "target": "",
+   "deadline": "2026-11-19",
+   "url": "https://www.chessqueen.kr/3de27f52-bbd5-8114-abef-ed9099eb94fe"
+  },
+  {
+   "start": "2026-11-21",
+   "end": "2026-11-22",
+   "region": "경기",
+   "kind": "스탠다드",
+   "name": "비아 U1800 11월 FIDE 스탠다드 레이팅 대회",
+   "target": "FIDE ID 보유 · 스탠다드 1800 미만 또는 레이팅 미보유자",
+   "deadline": "2026-11-20",
+   "url": "https://www.chessqueen.kr/40527f52-bbd5-813b-b001-dc5a0d0ddbbb"
+  },
+  {
+   "start": "2026-11-22",
+   "end": "2026-11-22",
+   "region": "서울",
+   "kind": "래피드",
+   "name": "제1회 마포구청장배 청소년 체스대회",
+   "target": "",
+   "deadline": "2026-11-20",
+   "url": "https://www.chessqueen.kr/3ce27f52-bbd5-814e-aa0a-d89b09c3a56f"
+  },
+  {
+   "start": "2026-11-28",
+   "end": "2026-11-30",
+   "region": "경기",
+   "kind": "스탠다드",
+   "name": "제1회 슥슥이체스클럽 스탠다드 오픈",
+   "target": "레이팅 제한 없음 · FIDE ID 필수 · 최대 56명(미보유 최대 10명)",
+   "deadline": "",
+   "url": "https://www.chessqueen.kr/3ed27f52-bbd5-8146-8a51-e4fcfac324c5"
+  },
+  {
+   "start": "2026-11-29",
+   "end": "2026-11-29",
+   "region": "인천",
+   "kind": "블리츠",
+   "name": "제2회 연수구청장배 체스대회",
+   "target": "FIDE ID 필수 · 오픈 / 유스 U08·U10·U12 · 선착순 60명",
+   "deadline": "",
+   "url": "https://www.chessqueen.kr/41527f52-bbd5-812b-a151-c377cc8221e7"
+  },
+  {
+   "start": "2026-12-05",
+   "end": "2026-12-05",
+   "region": "경기",
+   "kind": "래피드",
+   "name": "위너스 래피드 체스 챔피언십",
+   "target": "연령 통합 · 내셔널 레이팅 1400 미만 · 상세 참가자격 확인",
+   "deadline": "2026-12-03",
+   "url": "https://www.chessqueen.kr/3fd27f52-bbd5-81f3-8ae9-cd5a5a97063e"
+  },
+  {
+   "start": "2026-12-05",
+   "end": "2026-12-05",
+   "region": "경기",
+   "kind": "래피드",
+   "name": "제2회 경기도체스연맹 회장배 체스대회",
+   "target": "유치부 · 초등부 · 중고등부 · 일반부",
+   "deadline": "2026-11-23",
+   "url": "https://www.chessqueen.kr/3f527f52-bbd5-81cc-9b4d-dae7ef5c172c"
+  },
+  {
+   "start": "2026-12-05",
+   "end": "2026-12-06",
+   "region": "서울",
+   "kind": "스탠다드",
+   "name": "제44회 LSH FIDE 레이팅 대회",
+   "target": "레이팅 1800 미만 · 2일 참가 우선 접수",
+   "deadline": "",
+   "url": "https://www.chessqueen.kr/41427f52-bbd5-81ca-bfb8-c5c3e76d803f"
+  },
+  {
+   "start": "2026-12-05",
+   "end": "2026-12-05",
+   "region": "경기",
+   "kind": "래피드",
+   "name": "챌린저스 래피드 체스 챔피언십",
+   "target": "1위 입상 경력 없는 초급 선수 · 연령별 경기",
+   "deadline": "2026-12-03",
+   "url": "https://www.chessqueen.kr/3fd27f52-bbd5-81d1-91fa-d2f3304c01bc"
+  }
+ ]
+}

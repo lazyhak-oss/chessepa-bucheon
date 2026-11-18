@@ -1,0 +1,23 @@
+# 매일 오전 9시(한국 시간)에 체스퀸 대회 일정을 읽어 events.json을 갱신한다.
+# 바뀐 내용이 있을 때만 커밋하고, GitHub Pages가 그 커밋으로 홈페이지를 다시 올린다.
+name: update-events
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/update_events.py --self-test && python3 scripts/update_events.py
+      - name: commit if changed
+        run: |
+          if git diff --quiet events.json; then echo "no change"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add events.json
+          git commit -m "대회 정보 자동 갱신 $(TZ=Asia/Seoul date +%F)"
+          git push

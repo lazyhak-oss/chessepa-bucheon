@@ -1,0 +1,20 @@
+# 홈페이지에 필요한 파일만 올린다. 참고 자료, 기획 문서, 레퍼런스 사이트 사본은 올리지 않는다.
+/*
+!/.gitignore
+!/.github/
+!/index.html
+!/instructor.html
+!/franchise.html
+!/privacy.html
+!/style.css
+!/menu.js
+!/events.js
+!/events.json
+!/fonts/
+!/images/
+/images/*
+!/images/E.jpg
+!/images/P.jpg
+!/images/A.jpg
+!/scripts/
+__pycache__/
