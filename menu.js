@@ -35,3 +35,50 @@ if (menuBtn && drawer) {
     if (e.key === 'Escape' && drawer.classList.contains('is-open')) setOpen(false);
   });
 }
+
+// 평가 인포그래픽: 큰 원에서 각 아이콘으로 사선을 긋고, 큰 원과 아이콘 둘레에 여러 겹 호를 그린다.
+// 선은 큰 원 오른쪽 호에서 출발해 아이콘을 감싸는 호의 한가운데에 닿는다. 화면 크기가 바뀌면 다시 그린다.
+const hub = document.querySelector('.hub');
+if (hub && 'ResizeObserver' in window) {
+  const svg = hub.querySelector('.hub-lines');
+  const TONES = ['#e65416', '#b03c0a', '#f2a27f'];
+  const pt = (c, r, a) => [c.x + r * Math.cos(a), c.y + r * Math.sin(a)];
+  const arc = (c, r, a0, a1, color, w = 2) => {
+    const [x0, y0] = pt(c, r, a0), [x1, y1] = pt(c, r, a1);
+    const large = a1 - a0 > Math.PI ? 1 : 0;
+    return `<path d="M${x0.toFixed(1)} ${y0.toFixed(1)}A${r} ${r} 0 ${large} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}" fill="none" stroke="${color}" stroke-width="${w}" stroke-linecap="round"/>`;
+  };
+  const center = (el, box) => { const r = el.getBoundingClientRect(); return { x: r.left - box.left + r.width / 2, y: r.top - box.top + r.height / 2, r: r.width / 2 }; };
+  const deg = Math.PI / 180;
+  const draw = () => {
+    if (getComputedStyle(svg).display === 'none') return;
+    const box = hub.getBoundingClientRect();
+    svg.setAttribute('width', box.width); svg.setAttribute('height', box.height);
+    svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
+    const core = center(hub.querySelector('.hub-core'), box);
+    const R = core.r + 18;
+    const icons = [...hub.querySelectorAll('.hub-ico')].map((el) => center(el, box));
+    const angles = icons.map((ic) => Math.atan2(ic.y - core.y, ic.x - core.x));
+    let out = '';
+    // 큰 원: 선이 출발하는 오른쪽 호 + 왼쪽에 겹겹이 두른 호(색 3톤)
+    out += arc(core, R, Math.min(...angles) - 14 * deg, Math.max(...angles) + 14 * deg, TONES[0], 2.5);
+    out += arc(core, R, 120 * deg, 235 * deg, TONES[0], 2.5);
+    out += arc(core, R + 13, 140 * deg, 250 * deg, TONES[1], 2);
+    out += arc(core, R + 26, 160 * deg, 215 * deg, TONES[2], 2);
+    out += arc(core, R + 13, -60 * deg, -25 * deg, TONES[2], 2);
+    // 각 아이콘: 큰 원 쪽을 감싸는 호, 그 호의 한가운데로 들어오는 사선
+    icons.forEach((ic, i) => {
+      const tone = TONES[i % 3];
+      const back = Math.atan2(core.y - ic.y, core.x - ic.x); // 아이콘에서 큰 원을 바라보는 방향
+      const ring = ic.r + 9;
+      const [sx, sy] = pt(core, R, angles[i]);
+      const [ex, ey] = pt(ic, ring, back);
+      out += `<line x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" stroke="${tone}" stroke-width="2"/>`;
+      out += arc(ic, ring, back - 95 * deg, back + 95 * deg, tone, 2.5);
+      out += arc(ic, ring + 8, back + 20 * deg, back + 70 * deg, TONES[(i + 2) % 3], 1.5);
+    });
+    svg.innerHTML = out;
+  };
+  new ResizeObserver(draw).observe(hub);
+  document.fonts?.ready.then(draw);
+}

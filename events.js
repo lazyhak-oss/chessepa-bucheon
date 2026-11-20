@@ -51,3 +51,56 @@
   const upd = document.getElementById('event-updated');
   if (upd && data.updated) upd.textContent = data.updated.replaceAll('-', '. ') + '.';
 })();
+
+// 첫 화면 NOTICE(이번 달 수업 안내)와 클럽데이 카드: 학원관리앱(chess-epa-os)에 입력한
+// 공휴일 수업 여부, 전체 휴강일, "클럽데이"·"보강데이" 행사를 가져와 보여 준다.
+// 못 불러오면 "문자로 안내" 문구를 그대로 둔다.
+(async () => {
+  let data;
+  try {
+    const res = await fetch('https://chess-epa-os.vercel.app/api/external/month-notice');
+    if (!res.ok) return;
+    data = await res.json();
+  } catch { return; }
+  const today = data.today;
+  const wd = (d) => '일월화수목금토'[new Date(d + 'T00:00:00Z').getUTCDay()];
+  const md = (d) => `${+d.slice(5, 7)}/${+d.slice(8, 10)}(${wd(d)})`;
+  const time = (e) => (e.startTime ? ` ${e.startTime}${e.endTime ? '–' + e.endTime : ''}` : '');
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
+
+  // NOTICE
+  const list = document.getElementById('notice-list');
+  const mon = document.getElementById('notice-month');
+  if (list) {
+    if (mon && data.month) mon.textContent = `${+data.month.slice(5, 7)}월`;
+    const items = data.days.map((d) => {
+      const li = el('li', '', `${md(d.date)} ${d.name}`);
+      li.append(el('b', d.status === '휴강' ? 'off' : 'on', d.status));
+      return li;
+    });
+    const club = data.clubDays.filter((c) => c.date.slice(0, 7) === data.month);
+    if (club.length) items.push(el('li', 'notice-event', `체스클럽 ${club.map((c) => md(c.date) + time(c)).join(', ')}`));
+    if (data.makeupDays.length) {
+      const t = time(data.makeupDays[0]);
+      const same = data.makeupDays.every((m) => time(m) === t);
+      items.push(el('li', 'notice-event', `보강데이 ${data.makeupDays.map((m) => md(m.date) + (same ? '' : time(m))).join('·')}${same ? t : ''}`));
+    }
+    if (!items.length) items.push(el('li', '', '이번 달은 공휴일 휴강 없이 정상 수업합니다.'));
+    list.replaceChildren(...items);
+  }
+
+  // 수업 외 활동의 클럽데이 카드
+  const box = document.getElementById('clubday-when');
+  if (box) {
+    const label = (c) => `${+c.date.slice(5, 7)}월 ${+c.date.slice(8, 10)}일(${wd(c.date)})${time(c)}`;
+    const thisMonth = data.clubDays.filter((c) => c.date.slice(0, 7) === today.slice(0, 7));
+    const upcoming = data.clubDays.filter((c) => c.date >= today);
+    if (thisMonth.length) {
+      const past = thisMonth.every((c) => c.date < today);
+      box.textContent = `${past ? '이번 달 클럽데이(종료)' : '이번 달 클럽데이'}: ${thisMonth.map(label).join(', ')}`;
+      if (past && upcoming.length) box.textContent += ` · 다음: ${label(upcoming[0])}`;
+    } else if (upcoming.length) {
+      box.textContent = `다음 클럽데이: ${label(upcoming[0])}`;
+    }
+  }
+})();

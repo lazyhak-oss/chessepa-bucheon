@@ -10,11 +10,13 @@
 !/menu.js
 !/events.js
 !/events.json
+!/sitemap.xml
 !/fonts/
 !/images/
 /images/*
 !/images/E.jpg
 !/images/P.jpg
 !/images/A.jpg
+!/images/hero-pieces.webp
 !/scripts/
 __pycache__/
