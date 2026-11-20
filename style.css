@@ -112,8 +112,8 @@ a { color: inherit; }
 /* 머리말과 제목 */
 .eyebrow {
   margin: 0 0 16px;
-  font: 400 13px/1.4 var(--font-display); letter-spacing: .2em; text-transform: uppercase;
-  color: var(--orange-ink);
+  font: 500 14px/1.4 var(--font-display); letter-spacing: .02em;
+  color: var(--grey);
 }
 .section-head { max-width: 640px; margin-bottom: var(--space-64); }
 .section-head--center { margin-inline: auto; text-align: center; }
@@ -208,10 +208,10 @@ a { color: inherit; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 24px; }
 .hero-bar { position: relative; padding-bottom: 40px; }
 .hero-bar .container { display: grid; grid-template-columns: 1.2fr 1.2fr 180px 1fr; gap: 24px; }
-.hero-bar-item { padding: 24px 28px; border-radius: var(--radius-md); }
-.hero-bar h2 { margin: 0 0 12px; font: 400 12px/1 var(--font-display); letter-spacing: .25em; text-transform: uppercase; color: var(--orange-ink); }
-.hero-bar p { margin: 0 0 8px; font-size: 14px; line-height: 1.6; color: var(--grey); }
 .hero-bar .hero-bar-photo { padding: 0; display: grid; place-items: center; font-size: 13px; color: var(--grey); overflow: hidden; }
+.hero-bar-item { padding: 24px 28px; border-radius: var(--radius-md); }
+.hero-bar h2 { margin: 0 0 12px; font: 500 14px/1.2 var(--font-display); letter-spacing: .02em; color: var(--grey); }
+.hero-bar p { margin: 0 0 8px; font-size: 14px; line-height: 1.6; color: var(--grey); }
 
 /* 번호 소개: 큰 숫자 + 눌린 액자 사진 + 글 */
 .feature { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: var(--space-64); }
@@ -227,7 +227,7 @@ a { color: inherit; }
 /* 반 카드 */
 .class-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: var(--space-32); }
 .class-card { display: flex; flex-direction: column; padding: 36px 32px 32px; border-radius: var(--radius-lg); }
-.class-tag { margin: 0 0 28px; font: 400 13px/1 var(--font-display); letter-spacing: .15em; text-transform: uppercase; color: var(--orange-ink); }
+.class-tag { margin: 0 0 28px; font: 500 13px/1 var(--font-display); letter-spacing: .02em; color: var(--grey); }
 .class-card h3 { margin: 0 0 10px; font-size: 22px; font-weight: 600; line-height: 1.4; }
 .class-card > p { margin: 0 0 28px; color: var(--grey); }
 .class-meta { margin: 0 0 32px; padding: 0; list-style: none; }
@@ -254,7 +254,7 @@ a { color: inherit; }
 .table-wrap { overflow-x: auto; padding: 8px 12px; border-radius: var(--radius-lg); }
 .table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 15px; }
 .table th, .table td { padding: 18px 20px; text-align: left; border-bottom: 1px solid var(--line); }
-.table thead th { font: 400 12px/1.4 var(--font-display); letter-spacing: .15em; text-transform: uppercase; color: var(--orange-ink); }
+.table thead th { font: 500 13px/1.4 var(--font-display); letter-spacing: .02em; color: var(--grey); }
 .table tbody th { font-weight: 600; }
 .table tbody tr:last-child > * { border-bottom: 0; }
 
@@ -296,7 +296,7 @@ a { color: inherit; }
 /* 하단: 눌린 판 */
 .site-footer { padding: 0 0 40px; font-size: 14px; color: var(--grey); }
 .site-footer > .container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; padding: 56px; border-radius: var(--radius-lg); }
-.site-footer h2 { margin: 0 0 16px; font: 400 12px/1 var(--font-display); letter-spacing: .25em; text-transform: uppercase; color: var(--orange-ink); }
+.site-footer h2 { margin: 0 0 16px; font: 500 14px/1.2 var(--font-display); letter-spacing: .02em; color: var(--grey); }
 .site-footer .logo { margin-bottom: 24px; color: var(--charcoal); }
 .site-footer ul { margin: 0; padding: 0; list-style: none; }
 .site-footer li { padding: 4px 0; }
@@ -399,7 +399,7 @@ body { font-synthesis-weight: none; }
 html:not(.js) .slider-nav { display: none; }
 
 /* 스크롤하면 아래에서 떠오른다. 스크립트가 붙여 주므로 스크립트가 없으면 그대로 보인다 */
-.reveal { opacity: 0; transform: translateY(32px); transition: opacity .8s ease, transform .8s ease; }
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s ease-out, transform .5s ease-out; }
 .reveal.is-in { opacity: 1; transform: none; }
 
 @media (max-width: 1024px) {
@@ -416,7 +416,7 @@ html:not(.js) .slider-nav { display: none; }
 
 /* 원장 이력 목록 */
 .profile-list { margin: 0 0 8px; padding-left: 18px; color: var(--grey); font-size: 15px; }
-.profile-list li { padding: 5px 0; }
+.profile-list li { padding: 4px 0; }
 .profile-list li::marker { color: var(--orange); }
 .accordion details > p + p { margin-top: -12px; }
 
@@ -492,7 +492,7 @@ html:not(.js) .slider-nav { display: none; }
 .map-station line { stroke: var(--orange); stroke-width: 4; stroke-dasharray: 8 7; }
 .map-station path { fill: var(--orange); }
 .map-station rect { fill: #fff; stroke: var(--orange); stroke-width: 2; }
-.map-station text { fill: var(--orange-ink); stroke: none; font-size: 16px; font-weight: 700; text-anchor: middle; }
+.map-station text { fill: var(--orange-ink); stroke: none; font-size: 16px; font-weight: 600; text-anchor: middle; }
 .map-apt text { font-size: 15px; font-weight: 600; fill: #6b6e74; text-anchor: middle; }
 .map-lib text { text-anchor: end; }
 .map-lib rect { fill: var(--charcoal); }
@@ -523,7 +523,7 @@ html:not(.js) .slider-nav { display: none; }
 /* 약도 칸을 옆 칸 높이에 맞춘다: 넓은 화면에서는 칸을 꽉 채우고(가장자리 조금 잘림), 좁으면 정사각형 */
 .loc-map { display: flex; flex-direction: column; }
 .map { aspect-ratio: 1; }
-.hours li { padding: 7px 0; }
+.hours li { padding: 8px 0; }
 @media (min-width: 1181px) {
   .loc-grid { grid-template-columns: minmax(240px, .8fr) auto minmax(360px, 1.2fr); }
   .map { aspect-ratio: auto; flex: 1 1 0; min-height: 0; height: 0; }
@@ -548,6 +548,134 @@ html:not(.js) .slider-nav { display: none; }
 .trial-card:hover { box-shadow: var(--raise-sm); }
 .trial-card:active { box-shadow: var(--press); }
 .trial-card-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.trial-card-text { font-size: 26px; font-weight: 700; color: var(--orange-ink); letter-spacing: -0.02em; }
+.trial-card-text { font-size: 26px; font-weight: 600; color: var(--orange-ink); letter-spacing: -0.02em; }
 .trial-card .icon-btn { color: var(--white); background: linear-gradient(145deg, var(--orange-strong), var(--orange-ink)); box-shadow: var(--raise-sm); }
 .trial-card-sub { margin-top: 12px; font-size: 14px; color: var(--grey); }
+
+/* 표 안 글자를 본문과 같은 16px로 */
+.table { font-size: 16px; }
+
+/* 빈 공간 아이콘: 질문 목록 오른쪽, 평가 카드 오른쪽 위 (장식) */
+.quotes li { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-right: 14px; }
+.quotes .card-icon { width: 48px; height: 48px; }
+.class-card { position: relative; }
+.class-card > .card-icon { position: absolute; top: 24px; right: 24px; }
+.clubday-when { margin-top: 12px !important; font-weight: 600; color: var(--orange-ink) !important; }
+
+/* 첫 화면 NOTICE: 이번 달 수업 안내 */
+.notice-list { margin: 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.5; color: var(--charcoal); }
+.notice-list li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--line); }
+.notice-list li:last-child { border-bottom: 0; }
+.notice-list b { flex: none; padding: 1px 10px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 700; }
+.notice-list b.off { color: var(--white); background: var(--orange); }
+.notice-list b.on { color: var(--grey); box-shadow: var(--press); }
+.notice-list .notice-event { display: block; font-weight: 600; color: var(--orange-ink); }
+
+/* 원 안 숫자: Montserrat 숫자가 위로 떠 보여 원 중심에 맞춘다 */
+.process li::before { padding-top: .33em; }
+
+/* 버튼 옆 글자 링크의 밑줄을 알약 버튼 아랫선에 맞춘다 */
+.btn-row--bottom { align-items: flex-end; }
+
+/* 줄바꿈: 한 줄에 들어가면 한 줄로, 넘치면 단어(어절) 단위로만 끊고 끝줄에 한 단어만 남지 않게 */
+p, li, h1, h2, h3, h4, td, th, small { text-wrap: pretty; }
+.process li, .section-title, .hero-title { text-wrap: balance; }
+.nowrap { white-space: nowrap; }
+
+/* 질문 구간: 사진 칸 위아래를 왼쪽(소개 문장~마지막 질문)에 맞춘다 */
+.split--stretch { align-items: stretch; }
+.split--stretch .feature-media { aspect-ratio: auto; }
+@media (max-width: 1024px) {
+  .split--stretch .feature-media { aspect-ratio: 4 / 3; }
+}
+
+/* 평가하는 다섯 가지: 가운데 원에서 다섯 항목으로 가지가 뻗는 인포그래픽 */
+.hub { display: grid; grid-template-columns: 240px 1fr; align-items: center; max-width: 920px; }
+.hub-core { position: relative; width: 220px; height: 220px; border-radius: 50%; background: var(--base); box-shadow: var(--raise); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.hub-core::before { content: ""; position: absolute; inset: -18px; border-radius: 50%; border: 2px solid transparent; border-top-color: var(--orange); border-left-color: var(--orange); transform: rotate(-30deg); }
+.hub-core-num { font: 800 72px/1 "Montserrat", var(--font-display); color: var(--orange); }
+.hub-core-label { margin-top: 8px; font-size: 16px; font-weight: 600; color: var(--charcoal); }
+.hub-list { position: relative; margin: 0; padding: 0 0 0 110px; list-style: none; display: grid; gap: 22px; }
+.hub-list::before { content: ""; position: absolute; left: 0; top: 50%; width: 55px; height: 2px; background: var(--orange); }
+.hub-list::after { content: ""; position: absolute; left: 55px; top: 36px; bottom: 36px; width: 2px; background: var(--orange); }
+.hub-list li { position: relative; display: flex; align-items: center; gap: 24px; }
+.hub-list li::before { content: ""; position: absolute; left: -55px; top: 50%; width: 55px; height: 2px; background: linear-gradient(90deg, var(--orange), var(--orange-haze)); }
+.hub-ico { position: relative; flex: none; width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; background: var(--base); box-shadow: var(--raise-sm); color: var(--orange-ink); }
+.hub-ico::after { content: ""; position: absolute; inset: -7px; border-radius: 50%; border: 2px solid transparent; border-right-color: var(--orange); border-bottom-color: var(--orange); transform: rotate(-20deg); }
+.hub-list h4 { margin: 0 0 2px; font-size: 18px; font-weight: 600; }
+.hub-list li p { margin: 0; color: var(--grey); }
+.hub-num { font: 800 13px/1 "Montserrat", var(--font-display) !important; color: var(--orange-ink) !important; margin-bottom: 6px !important; }
+@media (max-width: 768px) {
+  .hub { grid-template-columns: 1fr; justify-items: center; gap: 40px; }
+  .hub-core { width: 170px; height: 170px; }
+  .hub-core-num { font-size: 56px; }
+  .hub-list { padding: 0; justify-self: stretch; }
+  .hub-list::before, .hub-list::after, .hub-list li::before { content: none; }
+  .hub-ico { width: 60px; height: 60px; }
+}
+
+/* 표 안의 화면낭독 전용 글자(.sr-only)가 표 밖으로 새어 모바일 화면을 넓히지 않게 */
+.table-wrap { position: relative; }
+
+/* 평가 인포그래픽 v2: 사선 연결선과 여러 겹 호는 menu.js가 SVG로 그린다(.hub-lines) */
+.hub { position: relative; grid-template-columns: 240px 1fr; }
+.hub-lines { position: absolute; left: 0; top: 0; z-index: 0; pointer-events: none; overflow: visible; }
+.hub-core, .hub-list { position: relative; z-index: 1; }
+.hub-core::before, .hub-ico::after, .hub-list::before, .hub-list::after, .hub-list li::before { content: none; }
+.hub-list { padding-left: 168px; gap: 24px; }
+.hub-core-label { margin: 0; font: 400 22px/1.2 var(--font-display); letter-spacing: .02em; color: var(--grey); }
+
+@media (max-width: 768px) {
+  .hub-lines { display: none; }
+  .hub-list { padding-left: 0; }
+}
+
+/* 평가 인포그래픽을 화면 가운데로 */
+.hub { width: fit-content; max-width: 100%; margin-inline: auto; }
+@media (max-width: 768px) { .hub { width: auto; grid-template-columns: 1fr; } }
+
+/* 로고에 마우스를 올리면 메뉴처럼 주황으로 */
+.logo .logo-en, .logo .logo-ko { transition: color .2s; }
+.logo:hover .logo-en { color: var(--orange-ink); }
+.logo:hover .logo-ko { color: var(--orange); }
+
+/* 절차 원 숫자: 평소엔 회색, 마우스를 올리면 주황 */
+.process li::before { color: #a3a5ab; transition: color .25s; }
+.process li:hover::before { color: var(--orange); }
+
+/* 좁은 화면에서는 글자(E·P·A와 제목)가 사진보다 먼저 오게 */
+@media (max-width: 1024px) {
+  .feature .feature-media, .feature--reverse .feature-media { order: 2; }
+}
+
+/* 사진 칸의 사진은 흑백으로 */
+.feature-media img { filter: grayscale(1); }
+.feature-media img { transition: filter .4s; }
+.feature-media:hover img { filter: none; }
+
+/* 수업 안내 반 카드: 마우스를 올리면 윗줄(대상)은 연한 주황, 반 이름은 진한 주황 */
+#classes .class-card:not(.trial-card) .class-tag,
+#classes .class-card:not(.trial-card) h3 { transition: color .25s; }
+#classes .class-card:not(.trial-card):hover .class-tag { color: #f08a5d; }
+#classes .class-card:not(.trial-card):hover h3 { color: var(--orange-ink); }
+
+/* 운영 시간: 요일 목록과 안내문을 "운영 시간" 글자 시작선(아이콘 56px + 간격 16px)에 맞춘다 */
+.loc-hours .hours { margin-left: 72px; }
+/* 오시는 길 카드: 아이콘을 모두 운영 시간처럼 카드 윗선에서 같은 간격(24px)에 둔다 */
+.loc-card { padding: 24px 28px; }
+.loc-stack .loc-card { align-items: flex-start; }
+.loc-stack .loc-card > div { padding-top: 6px; }
+
+/* 링크 글자: 마우스를 올리면 강조색으로.
+   전화번호·밑줄 링크는 지금 색 그대로 두고 올리면 주황,
+   원래 주황 글자였던 보조 버튼·표의 화살표 버튼은 평소 회색, 올리면 주황 */
+main a, .site-footer a { transition: color .2s, box-shadow .2s; }
+main a:not(.btn):not(.trial-card):hover { color: var(--orange-ink); }
+.btn--soft { color: var(--grey); }
+.btn--soft:hover { color: var(--orange-ink); }
+.icon-btn--sm { color: var(--grey); }
+a.icon-btn--sm:hover { color: var(--orange-ink); }
+
+/* 첫 화면 기물: 바탕색 그대로 튀어나온 뉴모피즘 체스 말 */
+.stage-art img { display: block; width: 100%; height: auto; }
+@media (max-width: 1024px) { .stage-art { width: min(340px, 100%); margin-inline: auto; } }
