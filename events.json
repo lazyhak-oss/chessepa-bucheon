@@ -1,17 +1,7 @@
 {
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "source": "https://www.chessqueen.kr/",
  "events": [
-  {
-   "start": "2026-11-21",
-   "end": "2026-11-21",
-   "region": "서울",
-   "kind": "래피드",
-   "name": "2026 서울체스 오딧세이",
-   "target": "",
-   "deadline": "2026-11-19",
-   "url": "https://www.chessqueen.kr/3de27f52-bbd5-8114-abef-ed9099eb94fe"
-  },
   {
    "start": "2026-11-21",
    "end": "2026-11-22",
@@ -91,6 +81,16 @@
    "target": "1위 입상 경력 없는 초급 선수 · 연령별 경기",
    "deadline": "2026-12-03",
    "url": "https://www.chessqueen.kr/3fd27f52-bbd5-81d1-91fa-d2f3304c01bc"
+  },
+  {
+   "start": "2026-12-05",
+   "end": "2026-12-05",
+   "region": "경기",
+   "kind": "래피드",
+   "name": "최강 래피드 체스 챔피언십",
+   "target": "최강 저학년부 · 고학년부 · 오픈부",
+   "deadline": "2026-12-03",
+   "url": "https://www.chessqueen.kr/37927f52-bbd5-805c-bddc-d89140012031"
   }
  ]
 }
