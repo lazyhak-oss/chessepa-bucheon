@@ -10,12 +10,12 @@ document.querySelectorAll('.slider').forEach((slider) => {
   }));
 });
 
-// 섹션 제목만 화면에 들어오면 살짝 떠오른다. 움직임 줄이기를 켠 사람에게는 하지 않는다
+// 화면에 들어오면 떠오른다. 움직임 줄이기를 켠 사람에게는 하지 않는다
 if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const io = new IntersectionObserver((entries) => entries.forEach((e) => {
     if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
   }), { rootMargin: '0px 0px -8% 0px' });
-  document.querySelectorAll('.section-head')
+  document.querySelectorAll('.section-head, .feature, .class-card, .process li, .statement p, .cta-banner, .slider, .accordion details')
     .forEach((el) => { el.classList.add('reveal'); io.observe(el); });
 }
 
