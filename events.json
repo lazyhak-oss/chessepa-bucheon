@@ -1,27 +1,7 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-21",
  "source": "https://www.chessqueen.kr/",
  "events": [
-  {
-   "start": "2026-11-21",
-   "end": "2026-11-22",
-   "region": "경기",
-   "kind": "스탠다드",
-   "name": "비아 U1800 11월 FIDE 스탠다드 레이팅 대회",
-   "target": "FIDE ID 보유 · 스탠다드 1800 미만 또는 레이팅 미보유자",
-   "deadline": "2026-11-20",
-   "url": "https://www.chessqueen.kr/40527f52-bbd5-813b-b001-dc5a0d0ddbbb"
-  },
-  {
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "region": "서울",
-   "kind": "래피드",
-   "name": "제1회 마포구청장배 청소년 체스대회",
-   "target": "",
-   "deadline": "2026-11-20",
-   "url": "https://www.chessqueen.kr/3ce27f52-bbd5-814e-aa0a-d89b09c3a56f"
-  },
   {
    "start": "2026-11-28",
    "end": "2026-11-30",
@@ -91,6 +71,26 @@
    "target": "최강 저학년부 · 고학년부 · 오픈부",
    "deadline": "2026-12-03",
    "url": "https://www.chessqueen.kr/37927f52-bbd5-805c-bddc-d89140012031"
+  },
+  {
+   "start": "2026-12-06",
+   "end": "2026-12-06",
+   "region": "경기",
+   "kind": "래피드",
+   "name": "제16회 아이사랑배 전국 체스대회",
+   "target": "유치·초등·여학생·일반(최강)부 / 3학년 이상 1위 입상자는 월반 또는 최강부",
+   "deadline": "2026-11-25",
+   "url": "https://www.chessqueen.kr/35027f52-bbd5-80cb-a841-f1261a2c32d8"
+  },
+  {
+   "start": "2026-12-06",
+   "end": "2026-12-06",
+   "region": "경기",
+   "kind": "래피드",
+   "name": "제6회 김포시 노비스 체스대회 — 유치부·초등 4~6학년",
+   "target": "유치부·초등 4~6학년 / 초심자, 기존 체스대회 1위 수상자 참가 제한",
+   "deadline": "2026-11-30",
+   "url": "https://www.chessqueen.kr/40527f52-bbd5-8180-b5f5-c84068818179"
   }
  ]
 }
