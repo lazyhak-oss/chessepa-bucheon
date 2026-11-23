@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22",
+ "updated": "2026-11-23",
  "source": "https://www.chessqueen.kr/",
  "events": [
   {
@@ -31,16 +31,6 @@
    "target": "연령 통합 · 내셔널 레이팅 1400 미만 · 상세 참가자격 확인",
    "deadline": "2026-12-03",
    "url": "https://www.chessqueen.kr/3fd27f52-bbd5-81f3-8ae9-cd5a5a97063e"
-  },
-  {
-   "start": "2026-12-05",
-   "end": "2026-12-05",
-   "region": "경기",
-   "kind": "래피드",
-   "name": "제2회 경기도체스연맹 회장배 체스대회",
-   "target": "유치부 · 초등부 · 중고등부 · 일반부",
-   "deadline": "2026-11-23",
-   "url": "https://www.chessqueen.kr/3f527f52-bbd5-81cc-9b4d-dae7ef5c172c"
   },
   {
    "start": "2026-12-05",
@@ -91,6 +81,16 @@
    "target": "유치부·초등부·여학생부·중고부·일반부 · 각 부 선착순 64명",
    "deadline": "2026-12-05",
    "url": "https://www.chessqueen.kr/3ed27f52-bbd5-81f6-8b8a-d8c7bcf2f29b"
+  },
+  {
+   "start": "2026-12-13",
+   "end": "2026-12-13",
+   "region": "경기",
+   "kind": "래피드",
+   "name": "제6회 김포시 노비스 체스대회 — 초등 1~3학년·중고등/성인",
+   "target": "초등 1~3학년·중고등/성인 / 초심자, 기존 체스대회 1위 수상자 참가 제한",
+   "deadline": "2026-12-06",
+   "url": "https://www.chessqueen.kr/40527f52-bbd5-8116-894c-e5627c1c99e7"
   }
  ]
 }
