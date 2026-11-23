@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="menu.js" defer></script>
   <script src="events.js" defer></script>
+  <script src="site-content.js" defer></script>
 
   <script type="application/ld+json">
   {
@@ -71,16 +72,16 @@
     </div>
     <div class="stage-art"><img src="images/hero-pieces.webp" alt="하얀 체스 기물 폰, 나이트, 킹" width="832" height="770"></div>
     <div class="stage-side">
-      <p class="hero-lead">유아부터 초등까지, 아이의 수준에 맞춰 한 수를 깊이 생각하고 배운 전략을 실전에 적용하는 체스 수업.</p>
+      <p class="hero-lead" data-edit="hero.lead" data-label="첫 화면 소개 문장">유아부터 초등까지, 아이의 수준에 맞춰 한 수를 깊이 생각하고 배운 전략을 실전에 적용하는 체스 수업.</p>
       <div class="hero-actions"><a class="btn" href="https://map.naver.com/p/entry/place/1477576299?placePath=%2Fticket" target="_blank" rel="noopener">체험수업 신청 <span class="btn-arrow" aria-hidden="true">↗</span></a><a class="btn btn--soft" href="instructor.html">지도자 자격과정</a></div>
     </div>
   </div>
   <p class="stage-word" aria-hidden="true">THE CHESS EPA</p>
   <div class="hero-bar"><div class="container">
     <div class="hero-bar-item notice"><h2>Notice · <span id="notice-month">이번 달</span> 수업 안내</h2><ul class="notice-list" id="notice-list"><li>이번 달 일정은 문자로 안내해 드립니다.</li></ul></div>
-    <div class="hero-bar-item"><h2>Events</h2><p>11월 1일 더체스 EPA 아카데미 부천센터에서 제2회 경기도체스경기연맹 래피드 체스 챔피언십이 열렸습니다.</p><a class="link-arrow" href="#activities">대회 소식 ↗</a></div>
-    <div class="hero-bar-item hero-bar-photo"><span class="todo">확인 필요: 사진</span></div>
-    <div class="hero-bar-item"><h2>News</h2><p>체스 주간 소식과 처음 배우는 체스를 블로그에 올립니다.</p><a class="link-arrow" href="https://blog.naver.com/thechessepa_bc" target="_blank" rel="noopener">블로그 보기 ↗</a></div>
+    <div class="hero-bar-item"><h2>Events</h2><p data-edit="hero.events" data-label="첫 화면 Events 소식">11월 1일 더체스 EPA 아카데미 부천센터에서 제2회 경기도체스경기연맹 래피드 체스 챔피언십이 열렸습니다.</p><a class="link-arrow" href="#activities">대회 소식 ↗</a></div>
+    <div class="hero-bar-item hero-bar-photo" data-photo="hero" data-label="첫 화면 작은 사진"><span class="todo">확인 필요: 사진</span></div>
+    <div class="hero-bar-item"><h2>News</h2><p data-edit="hero.news" data-label="첫 화면 News 소식">체스 주간 소식과 처음 배우는 체스를 블로그에 올립니다.</p><a class="link-arrow" href="https://blog.naver.com/thechessepa_bc" target="_blank" rel="noopener">블로그 보기 ↗</a></div>
   </div></div>
 </section>
 
@@ -114,7 +115,7 @@
       <p class="lead">더체스 EPA의 수업은 Exercise, Practice, Analysis 세 단계로 이어집니다.</p>
     </div>
     <div class="feature">
-      <div class="feature-media"><img src="images/E.jpg" alt="아이들이 연필로 기보를 적으며 체스를 연습하는 모습" loading="lazy"></div>
+      <div class="feature-media" data-photo="epa.e" data-label="E 연습 사진"><img src="images/E.jpg" alt="아이들이 연필로 기보를 적으며 체스를 연습하는 모습" loading="lazy"></div>
       <div>
         <p class="feature-num" style="--img: url(images/E.jpg)">E</p>
         <h3 class="feature-title">Exercise · 기초이론과 연습</h3>
@@ -122,7 +123,7 @@
       </div>
     </div>
         <div class="feature feature--reverse">
-      <div class="feature-media"><img src="images/P.jpg" alt="1st EPA Cup 주니어 체스 챔피언십 대회장에서 아이들이 대국하는 모습" loading="lazy"></div>
+      <div class="feature-media" data-photo="epa.p" data-label="P 실전 사진"><img src="images/P.jpg" alt="1st EPA Cup 주니어 체스 챔피언십 대회장에서 아이들이 대국하는 모습" loading="lazy"></div>
       <div>
         <p class="feature-num" style="--img: url(images/P.jpg)">P</p>
         <h3 class="feature-title">Practice · 실전 경험과 대회 참가</h3>
@@ -130,7 +131,7 @@
       </div>
     </div>
     <div class="feature">
-      <div class="feature-media"><img src="images/A.jpg" alt="원장님과 아이들이 노트북으로 경기를 함께 분석하는 모습" loading="lazy"></div>
+      <div class="feature-media" data-photo="epa.a" data-label="A 분석 사진"><img src="images/A.jpg" alt="원장님과 아이들이 노트북으로 경기를 함께 분석하는 모습" loading="lazy"></div>
       <div>
         <p class="feature-num" style="--img: url(images/A.jpg); --pos: 62% 125%; --size: 212% auto">A</p>
         <h3 class="feature-title">Analysis · 경기 분석과 평가</h3>
@@ -153,7 +154,7 @@
         <li><span>"다시 둔다면 어느 수를 바꾸고 싶어?"</span><span class="icon-btn card-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h11a5 5 0 0 1 0 10H9"/><path d="M8 5 4 9l4 4"/></svg></span></li>
       </ul>
       </div>
-      <div class="feature-media"><span class="todo">확인 필요: 수업 장면 사진</span></div>
+      <div class="feature-media" data-photo="classroom" data-label="수업 장면 사진(질문 구간)"><span class="todo">확인 필요: 수업 장면 사진</span></div>
     </div>
   </div>
 
@@ -194,13 +195,13 @@
       <p class="lead">과정마다 누가 듣고 무엇을 배우는지 먼저 확인하세요. 체험수업에서 아이의 수준을 보고 반과 시간을 정합니다.</p>
     </div>
     <div class="class-grid">
-      <article class="class-card"><p class="class-tag">Kids Brain · 6–7세</p><h3>키즈 브레인</h3><p>체스와 보드게임으로 규칙을 익히고 기다리는 연습을 합니다.</p></article>
-      <article class="class-card"><p class="class-tag">Chess Basic · 입문</p><h3>체스 베이직</h3><p>유아와 초등학생이 체스를 처음 배우는 입문반입니다. 기본 규칙과 전술을 익힙니다.</p></article>
-      <article class="class-card"><p class="class-tag">Chess Step Up</p><h3>체스 스텝업</h3><p>기본기를 익힌 아이가 한 단계 더 깊이 배우는 심화반입니다.</p></article>
-      <article class="class-card"><p class="class-tag">Chess Master</p><h3>체스 마스터</h3><p>선수반입니다. 이경학 원장이 전담하고, 센터 수업에 온라인 수업을 더합니다.</p></article>
-      <article class="class-card"><p class="class-tag">Online</p><h3>체스 온라인 클래스</h3><p>거리가 멀어도 집에서 듣는 소그룹 온라인 수업입니다.</p></article>
-      <article class="class-card"><p class="class-tag">Personal · 1:1</p><h3>1:1 퍼스널 클래스</h3><p>중고등학생도 시작할 수 있는 1:1 수업입니다. 온라인으로도 들을 수 있습니다.</p></article>
-      <article class="class-card"><p class="class-tag">Olympiad</p><h3>마인드스포츠올림피아드</h3><p>초등 1학년 이상이 따로 듣는 대회 준비 수업입니다.</p></article>
+      <article class="class-card"><p class="class-tag">Kids Brain · 6–7세</p><h3>키즈 브레인</h3><p data-edit="class.kids" data-label="키즈 브레인 설명">체스와 보드게임으로 규칙을 익히고 기다리는 연습을 합니다.</p></article>
+      <article class="class-card"><p class="class-tag">Chess Basic · 입문</p><h3>체스 베이직</h3><p data-edit="class.basic" data-label="체스 베이직 설명">유아와 초등학생이 체스를 처음 배우는 입문반입니다. 기본 규칙과 전술을 익힙니다.</p></article>
+      <article class="class-card"><p class="class-tag">Chess Step Up</p><h3>체스 스텝업</h3><p data-edit="class.stepup" data-label="체스 스텝업 설명">기본기를 익힌 아이가 한 단계 더 깊이 배우는 심화반입니다.</p></article>
+      <article class="class-card"><p class="class-tag">Chess Master</p><h3>체스 마스터</h3><p data-edit="class.master" data-label="체스 마스터 설명">선수반입니다. 이경학 원장이 전담하고, 센터 수업에 온라인 수업을 더합니다.</p></article>
+      <article class="class-card"><p class="class-tag">Online</p><h3>체스 온라인 클래스</h3><p data-edit="class.online" data-label="체스 온라인 클래스 설명">거리가 멀어도 집에서 듣는 소그룹 온라인 수업입니다.</p></article>
+      <article class="class-card"><p class="class-tag">Personal · 1:1</p><h3>1:1 퍼스널 클래스</h3><p data-edit="class.personal" data-label="1:1 퍼스널 클래스 설명">중고등학생도 시작할 수 있는 1:1 수업입니다. 온라인으로도 들을 수 있습니다.</p></article>
+      <article class="class-card"><p class="class-tag">Olympiad</p><h3>마인드스포츠올림피아드</h3><p data-edit="class.olympiad" data-label="마인드스포츠올림피아드 설명">초등 1학년 이상이 따로 듣는 대회 준비 수업입니다.</p></article>
       <article class="class-card"><p class="class-tag">Others</p><h3>기타 과정</h3><ul class="profile-list"><li>마인드 스포츠</li><li>메모리 스포츠</li><li>성인반</li></ul></article>
       <a class="class-card trial-card" href="https://map.naver.com/p/entry/place/1477576299?placePath=%2Fticket" target="_blank" rel="noopener"><p class="class-tag">Free Trial</p><span class="trial-card-row"><span class="trial-card-text">체험수업 신청</span><span class="icon-btn" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="trial-card-sub">첫 체험수업 무료 · 50분 · 네이버 예약</span></a>
     </div>
@@ -209,13 +210,13 @@
     <div class="table-wrap"><table class="table">
       <thead><tr><th>과정</th><th>대상 · 수업</th><th>수업료</th></tr></thead>
       <tbody>
-        <tr><td>키즈 브레인</td><td>6–7세 · 주 1회 90분</td><td>180,000원</td></tr>
-        <tr><td>체스 베이직</td><td>유·초등 입문 · 주 1회 60분</td><td>130,000원</td></tr>
-        <tr><td>체스 스텝업</td><td>심화 · 주 1–2회 120분</td><td>180,000원</td></tr>
-        <tr><td>체스 마스터</td><td>선수반 · 주 210분</td><td>250,000원</td></tr>
-        <tr><td>마인드스포츠올림피아드</td><td>주 1회 60분</td><td>100,000원</td></tr>
-        <tr><td>체스 온라인 클래스</td><td>소그룹 60분</td><td>상담 시 안내</td></tr>
-        <tr><td>1:1 퍼스널 클래스</td><td>온라인 가능</td><td>상담 시 안내</td></tr>
+        <tr><td>키즈 브레인</td><td>6–7세 · 주 1회 90분</td><td data-edit="fee.kids" data-label="키즈 브레인 수업료">180,000원</td></tr>
+        <tr><td>체스 베이직</td><td>유·초등 입문 · 주 1회 60분</td><td data-edit="fee.basic" data-label="체스 베이직 수업료">130,000원</td></tr>
+        <tr><td>체스 스텝업</td><td>심화 · 주 1–2회 120분</td><td data-edit="fee.stepup" data-label="체스 스텝업 수업료">180,000원</td></tr>
+        <tr><td>체스 마스터</td><td>선수반 · 주 210분</td><td data-edit="fee.master" data-label="체스 마스터 수업료">250,000원</td></tr>
+        <tr><td>마인드스포츠올림피아드</td><td>주 1회 60분</td><td data-edit="fee.olympiad" data-label="마인드스포츠올림피아드 수업료">100,000원</td></tr>
+        <tr><td>체스 온라인 클래스</td><td>소그룹 60분</td><td data-edit="fee.online" data-label="체스 온라인 클래스 수업료">상담 시 안내</td></tr>
+        <tr><td>1:1 퍼스널 클래스</td><td>온라인 가능</td><td data-edit="fee.personal" data-label="1:1 퍼스널 클래스 수업료">상담 시 안내</td></tr>
       </tbody>
     </table></div>
     <p class="note">자세한 내용은 상담 시 안내해 드립니다.</p>
@@ -229,10 +230,9 @@
       <h2 class="section-title">세계체스연맹 공인 트레이너 <span class="soft">원장 2인이 직접 지도합니다.</span></h2>
     </div>
     <div class="class-grid">
-      <article class="class-card"><p class="class-tag">원장 · 사고력 체스 멘토</p><h3>이원주</h3><ul class="profile-list"><li>세계체스연맹 공인 트레이너(FIDE National Instructor)</li><li>교육 경력 17년, 2009년 진로진학 컨설팅으로 시작</li><li>2017년부터 체스·마인드스포츠 교육</li><li>온·오프라인 누적 수강생 1만 명 이상</li><li>부천시체스경기연맹 회장</li><li>부모교육·외부 기관 출강</li><li>체스 아비터(심판), 대회 기획·운영 다수</li></ul></article>
-      <article class="class-card"><p class="class-tag">원장 · 선수반 전담</p><h3>이경학</h3><ul class="profile-list"><li>세계체스연맹 공인 트레이너(FIDE Developmental Instructor)</li><li>경기도체스경기연맹 회장</li><li>대한체스경기연맹 지도자관리위원장</li><li>체스 아비터(대회 페어링 심판)</li><li>대회 기획·운영 다수</li><li>선수반(체스 마스터) 전담 지도</li><li>초등학교 방과후 체스 지도</li></ul></article>
+      <article class="class-card"><div class="profile-photo" data-photo="director.wonju" data-label="이원주 원장 사진" hidden></div><p class="class-tag">원장 · 사고력 체스 멘토</p><h3>이원주</h3><ul class="profile-list"><li>세계체스연맹 공인 트레이너(FIDE National Instructor)</li><li>교육 경력 17년, 2009년 진로진학 컨설팅으로 시작</li><li>2017년부터 체스·마인드스포츠 교육</li><li>온·오프라인 누적 수강생 1만 명 이상</li><li>부천시체스경기연맹 회장</li><li>부모교육·외부 기관 출강</li><li>체스 아비터(심판), 대회 기획·운영 다수</li></ul></article>
+      <article class="class-card"><div class="profile-photo" data-photo="director.kyunghak" data-label="이경학 원장 사진" hidden></div><p class="class-tag">원장 · 선수반 전담</p><h3>이경학</h3><ul class="profile-list"><li>세계체스연맹 공인 트레이너(FIDE Developmental Instructor)</li><li>경기도체스경기연맹 회장</li><li>대한체스경기연맹 지도자관리위원장</li><li>체스 아비터(대회 페어링 심판)</li><li>대회 기획·운영 다수</li><li>선수반(체스 마스터) 전담 지도</li><li>초등학교 방과후 체스 지도</li></ul></article>
     </div>
-    <p class="note"><span class="todo">확인 필요: 두 원장 사진</span></p>
   </div>
 </section>
 
@@ -264,8 +264,8 @@
 
     <h3 class="sub-title">클럽데이</h3>
     <div class="class-grid">
-      <article class="class-card"><p class="class-tag">Club Day · 매월</p><h3>체스클럽데이</h3><p>매월 체스클럽데이를 엽니다. 재원생은 무료로 참여합니다.</p><p class="clubday-when" id="clubday-when">이번 달 일정은 문자로 안내해 드립니다.</p></article>
-      <article class="class-card"><p class="class-tag">Online · 매주 토요일</p><h3>온라인 대국</h3><p>매주 토요일 저녁 8시, 집에서 온라인으로 대국합니다. 재원생은 무료로 참여합니다.</p></article>
+      <article class="class-card"><p class="class-tag">Club Day · 매월</p><h3>체스클럽데이</h3><p data-edit="activity.clubday" data-label="체스클럽데이 설명">매월 체스클럽데이를 엽니다. 재원생은 무료로 참여합니다.</p><p class="clubday-when" id="clubday-when">이번 달 일정은 문자로 안내해 드립니다.</p></article>
+      <article class="class-card"><p class="class-tag">Online · 매주 토요일</p><h3>온라인 대국</h3><p data-edit="activity.online" data-label="온라인 대국 설명">매주 토요일 저녁 8시, 집에서 온라인으로 대국합니다. 재원생은 무료로 참여합니다.</p></article>
     </div>
 
     <h3 class="sub-title">최근 대회</h3>
@@ -279,7 +279,7 @@
     <p class="note">대회 소식과 결과는 블로그에도 올립니다.</p>
     <h3 class="sub-title">활동 사진</h3>
     <div class="slider">
-      <div class="slider-track" tabindex="0" aria-label="활동 사진, 옆으로 넘겨 보기"><div class="feature-media"><span class="todo">확인 필요: 수업 사진</span></div><div class="feature-media"><span class="todo">확인 필요: 대회 사진</span></div><div class="feature-media"><span class="todo">확인 필요: 교류전·체스클럽 사진</span></div></div>
+      <div class="slider-track" data-gallery tabindex="0" aria-label="활동 사진, 옆으로 넘겨 보기"><div class="feature-media"><span class="todo">확인 필요: 수업 사진</span></div><div class="feature-media"><span class="todo">확인 필요: 대회 사진</span></div><div class="feature-media"><span class="todo">확인 필요: 교류전·체스클럽 사진</span></div></div>
       <div class="slider-nav"><button class="icon-btn" type="button" data-dir="-1" aria-label="이전 사진">←</button><button class="icon-btn" type="button" data-dir="1" aria-label="다음 사진">→</button></div>
     </div>
     <p class="note"><span class="todo">확인 필요: 게시 동의를 받은 사진과 학부모 후기, 대회 입상 실적이 있으면 함께</span></p>
