@@ -23,5 +23,8 @@
 !/images/A.jpg
 !/images/hero-pieces.webp
 !/images/photos/
+!/images/gallery/
+!/gallery.html
+!/gallery.js
 !/scripts/
 __pycache__/

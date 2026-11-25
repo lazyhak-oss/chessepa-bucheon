@@ -361,8 +361,9 @@ body { font-synthesis-weight: none; }
 .info-list b { display: block; font-size: 13px; font-weight: 500; color: var(--grey); }
 .class-card > p:last-child { margin-bottom: 0; }
 .cta-banner .note { flex-basis: 100%; margin: 0; }
-/* 메뉴 여섯 개와 버튼이 한 줄에 들어가지 않는 폭부터 옆 메뉴로 바꾼다 */
-@media (max-width: 1100px) {
+/* 메뉴 여덟 개와 버튼이 한 줄에 들어가지 않는 폭부터 옆 메뉴로 바꾼다. 메뉴 글자는 두 줄로 꺾지 않는다 */
+.nav a { white-space: nowrap; }
+@media (max-width: 1240px) {
   .nav { display: none; }
   .menu-btn { display: block; }
 }
@@ -719,3 +720,29 @@ a.icon-btn--sm:hover { color: var(--orange-ink); }
 .profile-photo { aspect-ratio: 4 / 3; margin: -8px -8px 24px; border-radius: calc(var(--radius-md) - 8px); overflow: hidden; }
 .profile-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero-bar-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* 한 칸에 사진 여러 장(data-slides): 겹쳐 두고 is-on인 사진만 보인다. 넘김은 menu.js */
+[data-slides] { display: grid; }
+[data-slides] > img { grid-area: 1 / 1; opacity: 0; transition: opacity 1s ease, filter .4s; }
+[data-slides] > img.is-on { opacity: 1; }
+
+/* 갤러리(gallery.html): 항목 버튼, 사진 격자, 크게 보기. 사진 목록은 scripts/build_gallery.py가 만든다 */
+.chips { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 40px; }
+.chip { border: 0; border-radius: var(--radius-pill); padding: 10px 18px; background: var(--base); box-shadow: var(--raise-sm); color: var(--grey); font: 500 15px/1.2 var(--font-sans); cursor: pointer; }
+.chip span { margin-left: 4px; font-variant-numeric: tabular-nums; opacity: .7; }
+.chip[aria-pressed="true"] { box-shadow: var(--press); color: var(--orange-ink); font-weight: 600; }
+.gallery-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 16px; }
+.gallery-grid a { display: block; aspect-ratio: 1; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--raise-sm); }
+.gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+.gallery-grid a:hover img { transform: scale(1.04); }
+.lightbox { border: 0; padding: 0; max-width: 100vw; max-height: 100vh; width: 100%; height: 100%; background: transparent; }
+.lightbox::backdrop { background: rgba(20, 21, 23, .88); }
+.lightbox[open] { display: grid; place-items: center; }
+.lightbox img { max-width: calc(100% - 32px); max-height: calc(100% - 120px); object-fit: contain; border-radius: var(--radius-sm); }
+.lightbox-count { position: absolute; top: 24px; left: 24px; margin: 0; color: var(--white); font-variant-numeric: tabular-nums; }
+.lightbox-close { position: absolute; top: 16px; right: 16px; }
+.lightbox-prev, .lightbox-next { position: absolute; bottom: 24px; }
+.lightbox-prev { left: calc(50% - 64px); }
+.lightbox-next { right: calc(50% - 64px); }
+@media (max-width: 600px) { .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .gallery-grid a { border-radius: var(--radius-sm); } }
+@media (prefers-reduced-motion: reduce) { .gallery-grid img { transition: none; } }

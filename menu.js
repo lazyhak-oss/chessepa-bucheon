@@ -1,13 +1,36 @@
 // 모바일 옆 메뉴, 사진 슬라이드 화살표, 스크롤하면 나타나는 연출.
 document.documentElement.classList.add('js');
 
-// 사진 슬라이드: 화살표 한 번에 한 장. 스크립트가 없어도 옆으로 밀어 넘길 수 있다
+// 자동 넘김: 마우스를 올리거나 키보드로 들어가 있으면 멈추고, 움직임 줄이기를 켠 사람에게는 하지 않는다
+const autoplay = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+const every = (el, ms, fn) => {
+  if (!autoplay) return;
+  setInterval(() => { if (!document.hidden && !el.matches(':hover, :focus-within')) fn(); }, ms);
+};
+
+// 사진 슬라이드: 화살표 한 번에 한 장, 5초마다 다음 장, 끝에서 처음으로. 스크립트가 없어도 옆으로 밀어 넘길 수 있다
 document.querySelectorAll('.slider').forEach((slider) => {
   const track = slider.querySelector('.slider-track');
-  slider.querySelectorAll('[data-dir]').forEach((btn) => btn.addEventListener('click', () => {
+  const move = (dir) => {
     const step = track.firstElementChild.offsetWidth + parseFloat(getComputedStyle(track).columnGap);
-    track.scrollBy({ left: btn.dataset.dir * step, behavior: 'smooth' });
-  }));
+    const end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    if (dir > 0 && end) track.scrollTo({ left: 0, behavior: 'smooth' });
+    else track.scrollBy({ left: dir * step, behavior: 'smooth' });
+  };
+  slider.querySelectorAll('[data-dir]').forEach((btn) => btn.addEventListener('click', () => move(+btn.dataset.dir)));
+  every(slider, 5000, () => move(1));
+});
+
+// 한 칸에 사진 여러 장(data-slides): 4.5초마다 다음 사진으로 서서히 바뀐다
+document.querySelectorAll('[data-slides]').forEach((box) => {
+  const imgs = box.querySelectorAll('img');
+  if (imgs.length < 2) return;
+  let at = 0;
+  every(box, 4500, () => {
+    imgs[at].classList.remove('is-on');
+    at = (at + 1) % imgs.length;
+    imgs[at].classList.add('is-on');
+  });
 });
 
 // 화면에 들어오면 떠오른다. 움직임 줄이기를 켠 사람에게는 하지 않는다
