@@ -52,6 +52,41 @@
   if (upd && data.updated) upd.textContent = data.updated.replaceAll('-', '. ') + '.';
 })();
 
+// 공지사항 표: notices.json(블로그 공지 글, 매일 자동 갱신)으로 다시 그린다.
+// 파일을 못 읽으면 HTML에 적어 둔 줄을 그대로 둔다.
+(async () => {
+  const body = document.getElementById('notice-grid');
+  if (!body) return;
+  let data;
+  try {
+    const res = await fetch('notices.json', { cache: 'no-cache' });
+    if (!res.ok) return;
+    data = await res.json();
+  } catch { return; }
+  const list = (data.notices || []).filter((n) => /^https:\/\/blog\.naver\.com\//.test(n.url));
+  if (!list.length) return;
+  const day = (d) => d.split('-').map(Number).join('. ') + '.';
+  const ARROW = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+  const td = (text) => { const c = document.createElement('td'); c.textContent = text; return c; };
+  body.replaceChildren(...list.map((n) => {
+    const tr = document.createElement('tr');
+    const title = td(n.title);
+    if (n.summary) { const s = document.createElement('small'); s.textContent = n.summary; title.append(s); }
+    const go = document.createElement('td');
+    go.className = 'go';
+    const a = document.createElement('a');
+    a.className = 'icon-btn icon-btn--sm';
+    a.href = n.url; a.target = '_blank'; a.rel = 'noopener';
+    a.setAttribute('aria-label', `${n.title} 블로그에서 보기 (새 창)`);
+    a.innerHTML = ARROW;
+    go.append(a);
+    tr.append(title, td(day(n.date)), td(n.category), go);
+    return tr;
+  }));
+  const upd = document.getElementById('notice-updated');
+  if (upd && data.updated) upd.textContent = day(data.updated);
+})();
+
 // 첫 화면 NOTICE(이번 달 수업 안내)와 클럽데이 카드: 학원관리앱(chess-epa-os)에 입력한
 // 공휴일 수업 여부, 전체 휴강일, "클럽데이"·"보강데이" 행사를 가져와 보여 준다.
 // 못 불러오면 "문자로 안내" 문구를 그대로 둔다.

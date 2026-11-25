@@ -11,7 +11,10 @@
 !/events.js
 !/site-content.js
 !/events.json
+!/notices.json
 !/sitemap.xml
+!/CNAME
+!/robots.txt
 !/fonts/
 !/images/
 /images/*
