@@ -87,7 +87,7 @@
   if (upd && data.updated) upd.textContent = day(data.updated);
 })();
 
-// 첫 화면 NOTICE(이번 달 수업 안내)와 클럽데이 카드: 학원관리앱(chess-epa-os)에 입력한
+// 첫 화면 NOTICE(이번 달 행사 안내)와 클럽데이 카드: 학원관리앱(chess-epa-os)에 입력한
 // 공휴일 수업 여부, 전체 휴강일, "클럽데이"·"보강데이" 행사를 가져와 보여 준다.
 // 못 불러오면 "문자로 안내" 문구를 그대로 둔다.
 (async () => {
