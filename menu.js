@@ -8,7 +8,7 @@ const every = (el, ms, fn) => {
   setInterval(() => { if (!document.hidden && !el.matches(':hover, :focus-within')) fn(); }, ms);
 };
 
-// 사진 슬라이드: 화살표 한 번에 한 장, 5초마다 다음 장, 끝에서 처음으로. 스크립트가 없어도 옆으로 밀어 넘길 수 있다
+// 사진 슬라이드: 화살표 한 번에 한 장, 3.5초마다 다음 장, 끝에서 처음으로. 스크립트가 없어도 옆으로 밀어 넘길 수 있다
 document.querySelectorAll('.slider').forEach((slider) => {
   const track = slider.querySelector('.slider-track');
   const move = (dir) => {
@@ -18,7 +18,7 @@ document.querySelectorAll('.slider').forEach((slider) => {
     else track.scrollBy({ left: dir * step, behavior: 'smooth' });
   };
   slider.querySelectorAll('[data-dir]').forEach((btn) => btn.addEventListener('click', () => move(+btn.dataset.dir)));
-  every(slider, 5000, () => move(1));
+  every(slider, 3500, () => move(1));
 });
 
 // 한 칸에 사진 여러 장(data-slides): 4.5초마다 다음 사진으로 서서히 바뀐다
