@@ -693,12 +693,24 @@ a.icon-btn--sm:hover { color: var(--orange-ink); }
 .stage-art img { display: block; width: 100%; height: auto; }
 @media (max-width: 1024px) { .stage-art { width: min(340px, 100%); margin-inline: auto; } }
 
-/* 첫 화면 문구: 한 줄씩 아래에서 떠오른다. 움직임 줄이기 설정이면 그대로 보인다 */
+/* 첫 화면 문구: 바탕색 그대로 한 줄씩 볼록 튀어나온 뒤 글자색이 채워지고,
+   마지막 줄은 주황으로 잠시 강조했다가 회색이 된다. 움직임 줄이기 설정이면 그대로 보인다 */
 @media (prefers-reduced-motion: no-preference) {
-  .stage .hero-title span { animation: title-rise 1s cubic-bezier(.2, .7, .2, 1) both; }
+  .stage .hero-title span { animation: title-emboss 1.4s ease both; }
   .stage .hero-title span:nth-child(2) { animation-delay: .15s; }
-  .stage .hero-title span:nth-child(3) { animation-delay: .3s; }
-  .stage-side:last-child { animation: title-rise 1s .5s cubic-bezier(.2, .7, .2, 1) both; }
+  .stage .hero-title .soft { animation: title-emboss-soft 3.2s ease .3s both; }
+  .stage-side:last-child { animation: title-rise 1s .8s cubic-bezier(.2, .7, .2, 1) both; }
+}
+@keyframes title-emboss {
+  0% { color: var(--base); text-shadow: 0 0 0 var(--shade), 0 0 0 var(--highlight); }
+  55% { color: var(--base); text-shadow: 3px 3px 6px var(--shade), -3px -3px 6px var(--highlight); }
+  100% { color: var(--charcoal); text-shadow: 0 0 0 transparent, 0 0 0 transparent; }
+}
+@keyframes title-emboss-soft {
+  0% { color: var(--base); text-shadow: 0 0 0 var(--shade), 0 0 0 var(--highlight); }
+  24% { color: var(--base); text-shadow: 3px 3px 6px var(--shade), -3px -3px 6px var(--highlight); }
+  44%, 70% { color: var(--orange-ink); text-shadow: 0 0 0 transparent, 0 0 0 transparent; }
+  100% { color: var(--grey); text-shadow: 0 0 0 transparent, 0 0 0 transparent; }
 }
 @keyframes title-rise { from { opacity: 0; transform: translateY(28px); filter: blur(6px); } }
 
