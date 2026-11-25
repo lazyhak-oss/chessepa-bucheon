@@ -11,7 +11,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - run: python3 scripts/update_events.py --self-test && python3 scripts/update_events.py
       # 블로그 공지(notices.json). 블로그를 못 읽어도 대회 정보 갱신은 계속한다
       - run: python3 scripts/update_notices.py --self-test && python3 scripts/update_notices.py
