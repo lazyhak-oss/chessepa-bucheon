@@ -22,6 +22,8 @@ OUT = ROOT / "images" / "gallery"
 PAGE = ROOT / "gallery.html"
 EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 START, END = "<!-- gallery:start -->", "<!-- gallery:end -->"
+# 항목 순서. 여기 없는 새 폴더는 뒤에 이름순으로 붙는다
+ORDER = ["수업사진", "대회사진", "클럽데이", "마인드 스포츠", "학원내부사진"]
 
 
 def slug(name):
@@ -39,7 +41,8 @@ def save(src, dst, size, quality):
 
 def build():
     cats, keep = [], set()
-    for folder in sorted(p for p in SRC.iterdir() if p.is_dir() and not p.name.startswith("_")):
+    rank = lambda p: (ORDER.index(p.name) if p.name in ORDER else len(ORDER), p.name)
+    for folder in sorted((p for p in SRC.iterdir() if p.is_dir() and not p.name.startswith("_")), key=rank):
         files = sorted(f for f in folder.iterdir() if f.suffix.lower() in EXTS)
         if not files:
             continue
@@ -67,8 +70,14 @@ def build():
         for k, src in enumerate(items, 1):
             head, tail = src.rsplit("/", 1)
             figs.append(f'<li data-cat="{e(s)}"><a href="{e(src)}"><img src="{e(head)}/t/{e(tail)}" alt="{e(name)} {k}" loading="lazy" decoding="async"></a></li>')
+    first, first_alt = cats[0][2][0], f"{cats[0][0]} 1"
     block = (f'{START}\n    <div class="chips" aria-label="갤러리 항목">{"".join(tabs)}</div>\n'
-             f'    <ul class="gallery-grid">\n      ' + "\n      ".join(figs) + f'\n    </ul>\n    {END}')
+             f'    <ul class="g-strip" aria-label="사진 목록, 옆으로 넘겨 보기">\n      ' + "\n      ".join(figs) + '\n    </ul>\n'
+             f'    <figure class="g-stage"><img src="{e(first)}" alt="{e(first_alt)}">'
+             '<figcaption class="g-count"></figcaption>'
+             '<button class="icon-btn g-prev" type="button" aria-label="이전 사진">←</button>'
+             '<button class="icon-btn g-next" type="button" aria-label="다음 사진">→</button></figure>\n'
+             f'    {END}')
 
     page = PAGE.read_text(encoding="utf-8")
     if START not in page or END not in page:
