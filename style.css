@@ -371,7 +371,7 @@ body { font-synthesis-weight: none; }
 
 /* 첫 화면(학원 안내): 가운데 둥근 사진, 양옆에 글, 아래에 화면 폭을 채우는 큰 이름 */
 .stage { flex: 1; display: grid; grid-template-columns: 1fr minmax(0, 380px) 1fr; align-items: center; gap: 56px; padding-block: 56px 24px; }
-.stage .hero-title { font-size: 40px; }
+.stage .hero-title { font-size: clamp(40px, 3.9vw, 56px); }
 .stage .hero-lead { margin-bottom: 32px; }
 .stage-photo { aspect-ratio: 1; border-radius: 50%; padding: 14px; display: grid; place-items: center; overflow: hidden; background: var(--base); box-shadow: var(--press); color: var(--grey); text-align: center; }
 .stage-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
@@ -409,7 +409,7 @@ html:not(.js) .slider-nav { display: none; }
   .stage .hero-actions { justify-content: center; }
 }
 @media (max-width: 768px) {
-  .stage .hero-title { font-size: 32px; }
+  .stage .hero-title { font-size: 40px; }
   .statement { padding-top: var(--space-80); }
   .statement p { font-size: 24px; }
 }
@@ -692,6 +692,15 @@ a.icon-btn--sm:hover { color: var(--orange-ink); }
 /* 첫 화면 기물: 바탕색 그대로 튀어나온 뉴모피즘 체스 말 */
 .stage-art img { display: block; width: 100%; height: auto; }
 @media (max-width: 1024px) { .stage-art { width: min(340px, 100%); margin-inline: auto; } }
+
+/* 첫 화면 문구: 한 줄씩 아래에서 떠오른다. 움직임 줄이기 설정이면 그대로 보인다 */
+@media (prefers-reduced-motion: no-preference) {
+  .stage .hero-title span { animation: title-rise 1s cubic-bezier(.2, .7, .2, 1) both; }
+  .stage .hero-title span:nth-child(2) { animation-delay: .15s; }
+  .stage .hero-title span:nth-child(3) { animation-delay: .3s; }
+  .stage-side:last-child { animation: title-rise 1s .5s cubic-bezier(.2, .7, .2, 1) both; }
+}
+@keyframes title-rise { from { opacity: 0; transform: translateY(28px); filter: blur(6px); } }
 
 /* 원장 사진: 학원관리앱에서 올리면 카드 위에 나타난다(site-content.js) */
 .profile-photo { aspect-ratio: 4 / 3; margin: -8px -8px 24px; border-radius: calc(var(--radius-md) - 8px); overflow: hidden; }
