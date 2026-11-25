@@ -5,6 +5,7 @@
 - 사진은 images/gallery/ 아래에 큰 사진(긴 변 1600px)과 목록용 작은 사진(480px)으로 줄여 저장한다.
   촬영 위치·기기 정보(EXIF)는 지운다. 이미 줄여 둔 사진은 건너뛴다.
 - 원본 폴더에서 지운 사진은 갤러리에서도 지운다.
+- 이름이 _로 시작하는 폴더(예: 사진/_갤러리 제외)는 올리지 않는다. 포스터처럼 뺄 사진을 여기로 옮긴다.
 - 원본 '사진' 폴더는 깃허브에 올리지 않는다(.gitignore).
 Pillow가 필요하다.
 """
@@ -38,7 +39,7 @@ def save(src, dst, size, quality):
 
 def build():
     cats, keep = [], set()
-    for folder in sorted(p for p in SRC.iterdir() if p.is_dir()):
+    for folder in sorted(p for p in SRC.iterdir() if p.is_dir() and not p.name.startswith("_")):
         files = sorted(f for f in folder.iterdir() if f.suffix.lower() in EXTS)
         if not files:
             continue
