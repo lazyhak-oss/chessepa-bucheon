@@ -57,7 +57,9 @@ def parse(xml_text):
         label = next((v for k, v in CATEGORIES.items() if k in category), None)
         if not label:
             continue
-        link = (item.findtext("link") or "").split("?")[0]
+        if "보강" in clean(item.findtext("title")):  # 보강 안내는 홈페이지에 싣지 않는다
+            continue
+        link =(item.findtext("link") or "").split("?")[0]
         if not link.startswith("https://blog.naver.com/"):
             continue
         when = email.utils.parsedate_to_datetime(item.findtext("pubDate")).astimezone(KST)
@@ -82,6 +84,8 @@ def self_test():
       <category>원장다이어리</category><pubDate>Fri, 02 Oct 2026 10:00:00 +0900</pubDate></item>
     <item><title>대회</title><link>https://blog.naver.com/x/3</link>
       <category>대회 안내 , 대회 후기</category><pubDate>Mon, 05 Oct 2026 00:30:00 +0900</pubDate></item>
+    <item><title>11월 수업 일정·보강 안내</title><link>https://blog.naver.com/x/5</link>
+      <category>학원공지</category><pubDate>Mon, 05 Oct 2026 00:30:00 +0900</pubDate></item>
     <item><title>다른 사이트</title><link>https://evil.example/4</link>
       <category>학원공지</category><pubDate>Mon, 05 Oct 2026 00:30:00 +0900</pubDate></item>
     </channel></rss>"""
