@@ -50,6 +50,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { overflow-x: clip; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
@@ -135,7 +136,7 @@ a { color: inherit; }
   display: flex; align-items: center; justify-content: space-between; gap: 32px;
   padding: 0 10px 0 28px; border-radius: var(--radius-pill);
 }
-.logo { display: flex; flex-direction: column; text-decoration: none; line-height: 1.1; }
+.logo { display: flex; flex-direction: column; text-decoration: none; line-height: 1.1; white-space: nowrap; min-width: 0; }
 .logo-en { font: 400 22px/1 var(--font-display); letter-spacing: .04em; }
 .logo-ko { margin-top: 6px; font-size: 11px; letter-spacing: .08em; color: var(--grey); }
 .nav { display: flex; align-items: center; gap: 4px; }
