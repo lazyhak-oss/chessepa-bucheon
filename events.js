@@ -108,7 +108,8 @@
   const mon = document.getElementById('notice-month');
   if (list) {
     let nd = data;
-    const dated = (x) => [...x.days, ...(x.events || []), ...x.clubDays.filter((c) => c.date.slice(0, 7) === x.month), ...x.makeupDays];
+    const shown = (x) => (x.events || []).filter((e) => !e.name.includes('보강')); // 보강은 공지에 싣지 않는다
+    const dated = (x) => [...x.days, ...shown(x), ...x.clubDays.filter((c) => c.date.slice(0, 7) === x.month)];
     const cur = dated(data);
     if (cur.length && cur.every((e) => e.date < today)) {
       const [y, m] = data.month.split('-').map(Number);
@@ -120,19 +121,15 @@
     }
     const label = `${+nd.month.slice(5, 7)}월`;
     if (mon) mon.textContent = label;
-    const items = nd.days.map((d) => {
+    const rows = nd.days.map((d) => {
       const li = el('li', '', `${md(d.date)} ${d.name}`);
       li.append(el('b', d.status === '휴강' ? 'off' : 'on', d.status));
-      return li;
+      return [d.date, li];
     });
-    for (const e of nd.events || []) items.push(el('li', 'notice-event', `${md(e.date)} ${e.name}${time(e)}`));
-    const club = nd.clubDays.filter((c) => c.date.slice(0, 7) === nd.month);
-    if (club.length) items.push(el('li', 'notice-event', `체스클럽 ${club.map((c) => md(c.date) + time(c)).join(', ')}`));
-    if (nd.makeupDays.length) {
-      const t = time(nd.makeupDays[0]);
-      const same = nd.makeupDays.every((m) => time(m) === t);
-      items.push(el('li', 'notice-event', `보강데이 ${nd.makeupDays.map((m) => md(m.date) + (same ? '' : time(m))).join('·')}${same ? t : ''}`));
-    }
+    for (const e of shown(nd)) rows.push([e.date, el('li', 'notice-event', `${md(e.date)} ${e.name}${time(e)}`)]);
+    for (const c of nd.clubDays.filter((c) => c.date.slice(0, 7) === nd.month)) rows.push([c.date, el('li', 'notice-event', `${md(c.date)} 체스클럽${time(c)}`)]);
+    rows.sort((a, b) => a[0].localeCompare(b[0]));
+    const items = rows.map((r) => r[1]);
     if (!items.length) items.push(el('li', '', `${label}은 공휴일 휴강 없이 정상 수업합니다.`));
     list.replaceChildren(...items);
   }
