@@ -650,7 +650,7 @@ p, li, h1, h2, h3, h4, td, th, small { text-wrap: pretty; }
 }
 
 /* 평가 인포그래픽을 화면 가운데로 */
-.hub { width: fit-content; max-width: 100%; margin-inline: auto; }
+.hub { width: fit-content; max-width: 100%; margin: var(--space-80) auto 0; }
 @media (max-width: 768px) { .hub { width: auto; grid-template-columns: 1fr; } }
 
 /* 로고에 마우스를 올리면 메뉴처럼 주황으로 */
