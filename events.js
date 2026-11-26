@@ -103,24 +103,37 @@
   const time = (e) => (e.startTime ? ` ${e.startTime}${e.endTime ? '–' + e.endTime : ''}` : '');
   const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
 
-  // NOTICE
+  // NOTICE: 이번 달 행사가 모두 지나갔으면 다음 달 안내를 보여 준다.
   const list = document.getElementById('notice-list');
   const mon = document.getElementById('notice-month');
   if (list) {
-    if (mon && data.month) mon.textContent = `${+data.month.slice(5, 7)}월`;
-    const items = data.days.map((d) => {
+    let nd = data;
+    const dated = (x) => [...x.days, ...(x.events || []), ...x.clubDays.filter((c) => c.date.slice(0, 7) === x.month), ...x.makeupDays];
+    const cur = dated(data);
+    if (cur.length && cur.every((e) => e.date < today)) {
+      const [y, m] = data.month.split('-').map(Number);
+      const next = `${m === 12 ? y + 1 : y}-${String((m % 12) + 1).padStart(2, '0')}`;
+      try {
+        const r = await fetch(`https://chess-epa-os.vercel.app/api/external/month-notice?month=${next}`);
+        if (r.ok) nd = await r.json();
+      } catch { /* 다음 달을 못 불러오면 이번 달 안내를 그대로 둔다 */ }
+    }
+    const label = `${+nd.month.slice(5, 7)}월`;
+    if (mon) mon.textContent = label;
+    const items = nd.days.map((d) => {
       const li = el('li', '', `${md(d.date)} ${d.name}`);
       li.append(el('b', d.status === '휴강' ? 'off' : 'on', d.status));
       return li;
     });
-    const club = data.clubDays.filter((c) => c.date.slice(0, 7) === data.month);
+    for (const e of nd.events || []) items.push(el('li', 'notice-event', `${md(e.date)} ${e.name}${time(e)}`));
+    const club = nd.clubDays.filter((c) => c.date.slice(0, 7) === nd.month);
     if (club.length) items.push(el('li', 'notice-event', `체스클럽 ${club.map((c) => md(c.date) + time(c)).join(', ')}`));
-    if (data.makeupDays.length) {
-      const t = time(data.makeupDays[0]);
-      const same = data.makeupDays.every((m) => time(m) === t);
-      items.push(el('li', 'notice-event', `보강데이 ${data.makeupDays.map((m) => md(m.date) + (same ? '' : time(m))).join('·')}${same ? t : ''}`));
+    if (nd.makeupDays.length) {
+      const t = time(nd.makeupDays[0]);
+      const same = nd.makeupDays.every((m) => time(m) === t);
+      items.push(el('li', 'notice-event', `보강데이 ${nd.makeupDays.map((m) => md(m.date) + (same ? '' : time(m))).join('·')}${same ? t : ''}`));
     }
-    if (!items.length) items.push(el('li', '', '이번 달은 공휴일 휴강 없이 정상 수업합니다.'));
+    if (!items.length) items.push(el('li', '', `${label}은 공휴일 휴강 없이 정상 수업합니다.`));
     list.replaceChildren(...items);
   }
 
