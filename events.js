@@ -70,7 +70,12 @@
   const td = (text) => { const c = document.createElement('td'); c.textContent = text; return c; };
   body.replaceChildren(...list.map((n) => {
     const tr = document.createElement('tr');
-    const title = td(n.title);
+    const title = document.createElement('td');
+    const link = document.createElement('a');
+    link.className = 'row-title';
+    link.href = n.url; link.target = '_blank'; link.rel = 'noopener';
+    link.textContent = n.title;
+    title.append(link);
     if (n.summary) { const s = document.createElement('small'); s.textContent = n.summary; title.append(s); }
     const go = document.createElement('td');
     go.className = 'go';
