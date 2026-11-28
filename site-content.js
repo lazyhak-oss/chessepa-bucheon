@@ -35,6 +35,22 @@
     if (num) num.style.setProperty('--img', `url("${url}")`);
   });
 
+  // 슬라이드 사진 묶음(data-album): 앱에서 고친 적 있는 묶음만 바꾸고, 다 지웠으면 칸을 숨긴다
+  const albums = data.albums || {};
+  document.querySelectorAll('[data-album]').forEach((el) => {
+    const list = albums[el.dataset.album];
+    if (!Array.isArray(list)) return;
+    const items = list.filter((a) => a && okUrl(a.url));
+    if (!items.length) { el.style.display = 'none'; return; }
+    el.replaceChildren(...items.map((a, i) => {
+      const img = document.createElement('img');
+      img.src = a.url;
+      img.alt = typeof a.caption === 'string' && a.caption ? a.caption : '더체스EPA 사진';
+      if (i) img.loading = 'lazy'; else img.className = 'is-on';
+      return img;
+    }));
+  });
+
   const track = document.querySelector('[data-gallery]');
   const gallery = Array.isArray(data.gallery) ? data.gallery.filter((g) => g && okUrl(g.url)) : [];
   if (track && gallery.length) {

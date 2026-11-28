@@ -23,10 +23,13 @@ document.querySelectorAll('.slider').forEach((slider) => {
 
 // 한 칸에 사진 여러 장(data-slides): 4.5초마다 다음 사진으로 서서히 바뀐다
 document.querySelectorAll('[data-slides]').forEach((box) => {
-  const imgs = box.querySelectorAll('img');
-  if (imgs.length < 2) return;
+  // 사진은 앱에서 바뀔 수 있어(site-content.js) 매번 새로 찾는다
+  if (box.querySelectorAll('img').length < 2) return;
   let at = 0;
   every(box, 4500, () => {
+    const imgs = box.querySelectorAll('img');
+    if (imgs.length < 2) return;
+    at = Math.min(at, imgs.length - 1);
     imgs[at].classList.remove('is-on');
     at = (at + 1) % imgs.length;
     imgs[at].classList.add('is-on');
